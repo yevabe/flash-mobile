@@ -37,10 +37,16 @@
 										<input type="text" name="name" required id="name" class="form-control input-sm" placeholder="Nombre">
 									</div>
 									<div class="form-group">
+										<input type="text" name="celular" required id="celular" class="form-control input-sm" placeholder="Celular">
+									</div>
+									<div class="form-group">
 										<input type="text" name="email" required id="email" class="form-control input-sm" placeholder="Correo electronico">
 									</div>
 									<div class="form-group">
 										<input type="password" name="password" required id="password" class="form-control input-sm" placeholder="Contraseña">
+									</div>
+									<div class="form-group">
+										<input type="file" name="foto" required id="foto" class="form-control input-sm" placeholder="Fotografía">
 									</div>
 									<div class="form-group">
 										<div class="radio">

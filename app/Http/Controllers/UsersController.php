@@ -97,9 +97,25 @@ class UsersController extends Controller
      */
     public function update(Request $request)
     {
+        $password = $request->password; // password is form field
+        $hashed = \Hash::make($password);
+
+        $user = User::find($request->id);
+
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = $hashed;
+        $user->celular = $request->celular;
+        $user->foto = $request->foto;
+
+        $user->active = $request->active;
+
+        $user->save();
+
         $this->validate($request,[ 'username'=>'required', 'name'=>'required', 'email'=>'required', 'password'=>'required']);
 
-        User::find($request->id)->update($request->all());
+
         return redirect()->route('tiendas.index')->with('success','Registro actualizado satisfactoriamente');
 
     }
