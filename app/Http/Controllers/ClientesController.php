@@ -80,12 +80,11 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $codigo)
-    {
-        //
+    public function update(Request $request, $id)
+    {        //
         $this->validate($request,[ 'nombres'=>'required', 'apellidos'=>'required', 'celular'=>'required', 'email'=>'required', 'foto'=>'required']);
-
-        libro::find($id)->update($request->all());
+        
+        Cliente::find($id)->update($request->all());
         return redirect()->route('cliente.index')->with('success','Registro actualizado satisfactoriamente');
     }
 

@@ -31,7 +31,7 @@
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 cliente_form">
 									<div class="form-group">
-										<input type="text" name="username" required id="username" class="form-control input-sm" placeholder="Usuario">
+										<input type="text" name="username" required id="username" class="form-control input-sm" placeholder="Código">
 									</div>
 									<div class="form-group">
 										<input type="text" name="name" required id="name" class="form-control input-sm" placeholder="Nombre">

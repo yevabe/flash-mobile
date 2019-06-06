@@ -20,7 +20,7 @@
           <div class="table-container">
             <table id="mytable" class="table table-bordred table-striped">
              <thead>
-               <th>Usuario</th>
+               <th>Código</th>
                <th>Nombres</th>
                <th>E-mail</th>
                <th>Activo</th>

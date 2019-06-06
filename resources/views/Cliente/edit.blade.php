@@ -25,7 +25,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="table-container">
-						<form method="POST" action="{{ route('cliente.store') }}"  role="form">
+						<form method="POST" action="{{ route('cliente.edit', [$cliente->id] ) }}"  role="form">
 							{{ csrf_field() }}
 
 							<div class="row">
@@ -119,7 +119,7 @@
 										<input type="text" name="correo_creado" id="correo_creado" class="form-control input-sm" placeholder="Correo creado" value="{{$cliente->correo_creado}}">
 									</div>
 									<div class="form-group">
-										<input type="text" name="contrasena_correo" id="contrasena_correo" class="form-control input-sm" placeholder="Contrasela Correo" value="{{$cliente->contrasena_correo}}">
+										<input type="text" name="contrasena_correo" id="contrasena_correo" class="form-control input-sm" placeholder="Contraseña Correo" value="{{$cliente->contrasena_correo}}">
 									</div>
 									<div class="form-group">
 										<select class="form-control" name="estado">
@@ -128,7 +128,7 @@
 										</select>
 									</div>
 									<div class="form-group">
-										<input type="text" name="foto" id="foto" class="form-control input-sm" placeholder="Seleccionar foto">
+										<input type="text" name="foto" id="foto" class="form-control input-sm" placeholder="Seleccionar foto" value="{{$cliente->foto}}">
 									</div>
 
 									<div class="form-group">

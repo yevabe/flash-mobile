@@ -20,6 +20,7 @@ Auth::routes();
 Route::resource('cliente','ClientesController')->middleware('auth');;
 Route::get('/cliente/create', 'ClientesController@create')->name('cliente.create' );
 Route::post('/cliente/store', 'ClientesController@store')->name('cliente.store');
+Route::post('/cliente/save/{id}', 'ClientesController@update')->name('cliente.edit');
 
 Route::resource('tiendas','UsersController')->middleware('auth');;
 Route::get('/tiendas/create', 'UsersController@create')->name('tiendas.create' );
