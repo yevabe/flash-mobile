@@ -1,0 +1,9 @@
+.m-login__logo img {
+    width: 200px;
+}
+.m-login.m-login--2 .m-login__wrapper .m-login__container .m-login__logo{
+  margin: 0 auto 0rem auto;
+}
+.m-login.m-login--2 .m-login__wrapper .m-login__container .m-login__form {
+    margin: 2rem auto;
+}
