@@ -48,7 +48,7 @@
 										<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Cambiar contraseña" value="">
 									</div>
 									<div class="form-group">@if($user->foto!="")<a href="/storage/{{$user['foto']}}" target="_blank">Ver foto</a> @endif
-										<input type="file" name="foto" required id="foto" class="form-control input-sm" placeholder="Fotografía">
+										<input type="file" name="foto" id="foto" class="form-control input-sm" placeholder="Fotografía">
 									</div>
 									<div class="form-group">
 										<div class="radio">
