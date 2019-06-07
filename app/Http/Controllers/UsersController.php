@@ -132,7 +132,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        $this->validate($request,[ 'username'=>'required', 'name'=>'required', 'email'=>'required', 'password'=>'required']);
+        $this->validate($request,[ 'username'=>'required', 'name'=>'required', 'email'=>'required']);
 
 
         return redirect()->route('tiendas.index')->with('success','Registro actualizado satisfactoriamente');
