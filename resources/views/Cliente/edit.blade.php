@@ -80,7 +80,7 @@
 										<input type="text" name="chip" id="chip" class="form-control input-sm" placeholder="Número de chip" value="{{$cliente->chip}}">
 									</div>
 									<div class="form-group">
-										<label for="foto_chip">Foto Chip</label>
+										<label for="foto_chip">Foto Chip @if($cliente->foto_chip!="")<a href="/storage/{{$cliente->foto_chip}}" target="_blank">(Ver foto actual)</a> @endif</label>
 										<input type="file" name="foto_chip" id="foto_chip" class="form-control input-sm" placeholder="Foto de chip">
 									</div>
 									<div class="form-group">
@@ -129,7 +129,7 @@
 										</select>
 									</div>
 									<div class="form-group">
-										<label for="foto">Foto</label>
+										<label for="foto">Foto@if($cliente->foto!="")<a href="/storage/{{$cliente->foto}}" target="_blank">(Ver foto actual)</a> @endif</label></label>
 										<input type="file" name="foto" id="foto" class="form-control input-sm" placeholder="Seleccionar foto">
 									</div>
 									<div class="form-group">

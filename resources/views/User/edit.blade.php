@@ -25,7 +25,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="table-container">
-						<form method="POST" action="/tiendas/save"  role="form">
+						<form method="POST" action="/tiendas/save"  role="form" enctype="multipart/form-data">
 							{{ csrf_field() }}
 
 							<input name="_method" type="hidden" value="PATCH">
@@ -47,9 +47,9 @@
 									<div class="form-group">
 										<input type="password" name="password" required id="password" class="form-control input-sm" placeholder="Cambiar contraseña" value="">
 									</div>
-									<div class="form-group">
+									<div class="form-group">@if($user->foto!="")<a href="/storage/{{$user['foto']}}" target="_blank">Ver foto</a> @endif
 										<input type="file" name="foto" required id="foto" class="form-control input-sm" placeholder="Fotografía">
-									</div>									
+									</div>
 									<div class="form-group">
 										<div class="radio">
 										  <label><input type="radio" value="1" @if($user->active==1) checked @endif name="active">Activo</label>

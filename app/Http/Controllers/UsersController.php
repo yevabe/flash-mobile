@@ -54,10 +54,10 @@ class UsersController extends Controller
           $user->password = $hashed;
           $user->celular = $request->celular;
           if ($request->hasFile('foto')) {
-                  $storagePath = $request->foto->store('public');
-                  if(basename($storagePath)!=""){
-                      $user->foto = basename($storagePath);
-                  }
+            $storagePath = $request->foto->store('public');
+            if(basename($storagePath)!=""){
+                $user->foto = basename($storagePath);
+            }
           }
           $user->save();
 
@@ -118,10 +118,10 @@ class UsersController extends Controller
         $user->password = $hashed;
         $user->celular = $request->celular;
         if ($request->hasFile('foto')) {
-                $storagePath = $request->foto->store('public');
-                if(basename($storagePath)!=""){
-                    $user->foto = basename($storagePath);
-                }
+              $storagePath = $request->foto->store('public');
+              if(basename($storagePath)!=""){
+                  $user->foto = basename($storagePath);
+              }
         }
         $user->active = $request->active;
 
