@@ -43,15 +43,19 @@ class UsersController extends Controller
         if($user_exist==0 && $code_exist==0){
           $this->validate($request,[ 'username'=>'required', 'name'=>'required', 'email'=>'required', 'password'=>'required']);
 
-          $password = $request->password; // password is form field
-          $hashed = \Hash::make($password);
 
           $user = new User;
 
           $user->name = $request->name;
           $user->username = $request->username;
           $user->email = $request->email;
-          $user->password = $hashed;
+
+          if($request->password!=""){
+            $password = $request->password; // password is form field
+            $hashed = \Hash::make($password);
+            $user->password = $hashed;
+          }
+
           $user->celular = $request->celular;
           if ($request->hasFile('foto')) {
             $storagePath = $request->foto->store('public');
@@ -107,15 +111,16 @@ class UsersController extends Controller
      */
     public function update(Request $request)
     {
-        $password = $request->password; // password is form field
-        $hashed = \Hash::make($password);
-
         $user = User::find($request->id);
 
         $user->name = $request->name;
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->password = $hashed;
+        if($request->password!=""){
+          $password = $request->password; // password is form field
+          $hashed = \Hash::make($password);
+          $user->password = $hashed;
+        }
         $user->celular = $request->celular;
         if ($request->hasFile('foto')) {
               $storagePath = $request->foto->store('public');

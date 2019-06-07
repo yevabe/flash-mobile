@@ -45,7 +45,7 @@
 										<input type="text" name="email" required id="email" class="form-control input-sm" placeholder="Correo electronico" value="{{$user->email}}">
 									</div>
 									<div class="form-group">
-										<input type="password" name="password" required id="password" class="form-control input-sm" placeholder="Cambiar contraseña" value="">
+										<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Cambiar contraseña" value="">
 									</div>
 									<div class="form-group">@if($user->foto!="")<a href="/storage/{{$user['foto']}}" target="_blank">Ver foto</a> @endif
 										<input type="file" name="foto" required id="foto" class="form-control input-sm" placeholder="Fotografía">
