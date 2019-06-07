@@ -38,9 +38,10 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $user_exist = User::where("email", $request->email)->count();
-        if($user_exist==0){
-          $this->validate($request,[ 'username'=>'required', 'name'=>'required', 'email'=>'required', 'password'=>'required']);
+        $code_exist = User::where("username", $request->username)->count();
 
+        if($user_exist==0 && $code_exist==0){
+          $this->validate($request,[ 'username'=>'required', 'name'=>'required', 'email'=>'required', 'password'=>'required']);
 
           $password = $request->password; // password is form field
           $hashed = \Hash::make($password);
@@ -51,14 +52,23 @@ class UsersController extends Controller
           $user->username = $request->username;
           $user->email = $request->email;
           $user->password = $hashed;
-
-
+          $user->celular = $request->celular;
+          if ($request->hasFile('foto')) {
+                  $storagePath = $request->foto->store('public');
+                  if(basename($storagePath)!=""){
+                      $user->foto = basename($storagePath);
+                  }
+          }
           $user->save();
 
           $request->session()->flash('success', 'Registro creado satisfactoriamente');
           return redirect()->route('tiendas.index');
         }else{
-          $request->session()->flash('error', 'Ya existe una tienda con este correo electrónico');
+          if($user_exist > 0){
+            $request->session()->flash('error', 'Ya existe una tienda con este correo electrónico');
+          }elseif($code_exist > 0){
+            $request->session()->flash('error', 'Ya existe una tienda con este código');
+          }
           return redirect()->route('tiendas.index');
         }
 
@@ -107,8 +117,12 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->password = $hashed;
         $user->celular = $request->celular;
-        $user->foto = $request->foto;
-
+        if ($request->hasFile('foto')) {
+                $storagePath = $request->foto->store('public');
+                if(basename($storagePath)!=""){
+                    $user->foto = basename($storagePath);
+                }
+        }
         $user->active = $request->active;
 
         $user->save();

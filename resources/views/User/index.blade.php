@@ -18,14 +18,15 @@
             </div>
           </div>
           <div class="table-container">
-            <table id="mytable" class="table table-bordred table-striped">
+            <table id="mytable" class="table table-bordred table-striped" style="width:100%">
              <thead>
                <th>Código</th>
                <th>Nombres</th>
                <th>E-mail</th>
-               <th>Activo</th>
-               <th>Editar</th>
-               <th>Eliminar</th>
+               <th data-priority="2">Celular</th>
+               <th>Foto</th>
+               <th data-priority="1">Editar</th>
+               <th data-priority="1">Eliminar</th>
              </thead>
              <tbody>
               @if($users->count())
@@ -34,8 +35,8 @@
                 <td>{{$user->username}}</td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                <td>{{$user->active}}</td>
-
+                <td>{{$user->celular}}</td>
+                <td>@if($user->foto!="")<a href="/storage/{{$user['foto']}}" target="_blank">Ver foto</a> @endif</td>
                 <td><a class="btn btn-primary btn-xs" href="{{action('UsersController@edit', $user->id)}}" ><span class="glyphicon glyphicon-pencil"></span></a></td>
                 <td>
                   @if($user->admin == 0)
@@ -43,14 +44,15 @@
                      {{csrf_field()}}
                      <input name="_method" type="hidden" value="DELETE">
 
-                     <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                     <button onclick = "if (! confirm('¿Esta seguro?')) { return false; }" class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                   </form>
                    @endif
                  </td>
                </tr>
                @endforeach
                @else
                <tr>
-                <td colspan="8">No hay registro !!</td>
+                <td colspan="7">No hay registro !!</td>
               </tr>
               @endif
             </tbody>
@@ -62,5 +64,14 @@
     </div>
   </div>
 </section>
-
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#mytable').DataTable( {
+        responsive: true,
+        info: false,
+        searching:false,
+        paging:false
+    } );
+} );
+</script>
 @endsection

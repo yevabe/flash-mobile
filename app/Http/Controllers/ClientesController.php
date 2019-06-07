@@ -42,10 +42,54 @@ class ClientesController extends Controller
         $this->validate($request,[
           'codigo'=>'required',
           'nombres'=>'required',
-          'apellidos'=>'required',
-          'celular'=>'required',
-          'email'=>'required']);
-        Cliente::create($request->all());
+          'apellidos'=>'required']);
+
+          $cliente = new Cliente;
+
+          $cliente->codigo = $request->codigo;
+          $cliente->cedula = $request->cedula;
+          $cliente->expedicion = $request->expedicion;
+          $cliente->nombres = $request->nombres;
+          $cliente->apellidos = $request->apellidos;
+          $cliente->direccion = $request->direccion;
+          $cliente->barrio = $request->barrio;
+          $cliente->ciudad = $request->ciudad;
+          $cliente->departamento = $request->departamento;
+          $cliente->nacimiento = $request->nacimiento;
+          $cliente->celular = $request->celular;
+          $cliente->referido_id = $request->referido_id;
+          $cliente->referido_nombre = $request->referido_nombre;
+          $cliente->email = $request->email;
+          $cliente->activacion = $request->activacion;
+          $cliente->chip = $request->chip;
+          $cliente->numero_temporal_flash = $request->numero_temporal_flash;
+          $cliente->valor_recarga_activacion = $request->valor_recarga_activacion;
+          $cliente->plan_flash_mobile = $request->plan_flash_mobile;
+          $cliente->numero_a_portar = $request->numero_a_portar;
+          $cliente->operador = $request->operador;
+          $cliente->tipo_plan_operador_actual = $request->tipo_plan_operador_actual;
+          $cliente->nip = $request->nip;
+          $cliente->fecha_portabilidad = $request->fecha_portabilidad;
+          $cliente->cuenta_flash = $request->cuenta_flash;
+          $cliente->contrasena_cuenta = $request->contrasena_cuenta;
+          $cliente->correo_creado = $request->correo_creado;
+          $cliente->contrasena_correo = $request->contrasena_correo;
+          $cliente->estado = $request->estado;
+          $cliente->user_id = $request->user_id;
+          if ($request->hasFile('foto_chip')) {
+                  $storagePath = $request->foto_chip->store('public');
+                  if(basename($storagePath)!=""){
+                      $cliente->foto_chip = basename($storagePath);
+                  }
+          }
+          if ($request->hasFile('foto')) {
+                  $storagePath = $request->foto->store('public');
+                  if(basename($storagePath)!=""){
+                      $cliente->foto = basename($storagePath);
+                  }
+          }
+          $cliente->save();
+
         return redirect()->route('cliente.index')->with('success','Registro creado satisfactoriamente');
     }
 
@@ -82,9 +126,53 @@ class ClientesController extends Controller
      */
     public function update(Request $request, $id)
     {        //
-        $this->validate($request,[ 'nombres'=>'required', 'apellidos'=>'required', 'celular'=>'required', 'email'=>'required', 'foto'=>'required']);
-        
-        Cliente::find($id)->update($request->all());
+        $this->validate($request,[ 'nombres'=>'required', 'apellidos'=>'required', 'codigo'=>'required']);
+
+        $cliente = Cliente::find($request->id);
+        $cliente->codigo = $request->codigo;
+        $cliente->cedula = $request->cedula;
+        $cliente->expedicion = $request->expedicion;
+        $cliente->nombres = $request->nombres;
+        $cliente->apellidos = $request->apellidos;
+        $cliente->direccion = $request->direccion;
+        $cliente->barrio = $request->barrio;
+        $cliente->ciudad = $request->ciudad;
+        $cliente->departamento = $request->departamento;
+        $cliente->nacimiento = $request->nacimiento;
+        $cliente->celular = $request->celular;
+        $cliente->referido_id = $request->referido_id;
+        $cliente->referido_nombre = $request->referido_nombre;
+        $cliente->email = $request->email;
+        $cliente->activacion = $request->activacion;
+        $cliente->chip = $request->chip;
+        $cliente->numero_temporal_flash = $request->numero_temporal_flash;
+        $cliente->valor_recarga_activacion = $request->valor_recarga_activacion;
+        $cliente->plan_flash_mobile = $request->plan_flash_mobile;
+        $cliente->numero_a_portar = $request->numero_a_portar;
+        $cliente->operador = $request->operador;
+        $cliente->tipo_plan_operador_actual = $request->tipo_plan_operador_actual;
+        $cliente->nip = $request->nip;
+        $cliente->fecha_portabilidad = $request->fecha_portabilidad;
+        $cliente->cuenta_flash = $request->cuenta_flash;
+        $cliente->contrasena_cuenta = $request->contrasena_cuenta;
+        $cliente->correo_creado = $request->correo_creado;
+        $cliente->contrasena_correo = $request->contrasena_correo;
+        $cliente->estado = $request->estado;
+        $cliente->user_id = $request->user_id;
+        if ($request->hasFile('foto_chip')) {
+                $storagePath = $request->foto_chip->store('public');
+                if(basename($storagePath)!=""){
+                    $cliente->foto_chip = basename($storagePath);
+                }
+        }
+        if ($request->hasFile('foto')) {
+                $storagePath = $request->foto->store('public');
+                if(basename($storagePath)!=""){
+                    $cliente->foto = basename($storagePath);
+                }
+        }
+        $cliente->save();
+
         return redirect()->route('cliente.index')->with('success','Registro actualizado satisfactoriamente');
     }
 

@@ -25,7 +25,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="table-container">
-						<form method="POST" action="{{ route('cliente.edit', [$cliente->id] ) }}"  role="form">
+						<form method="POST" action="{{ route('cliente.edit', [$cliente->id] ) }}"  role="form" enctype="multipart/form-data">
 							{{ csrf_field() }}
 
 							<div class="row">
@@ -80,7 +80,8 @@
 										<input type="text" name="chip" id="chip" class="form-control input-sm" placeholder="Número de chip" value="{{$cliente->chip}}">
 									</div>
 									<div class="form-group">
-										<input type="text" name="foto_chip" id="foto_chip" class="form-control input-sm" placeholder="Foto de chip" value="{{$cliente->foto_chip}}">
+										<label for="foto_chip">Foto Chip</label>
+										<input type="file" name="foto_chip" id="foto_chip" class="form-control input-sm" placeholder="Foto de chip">
 									</div>
 									<div class="form-group">
 										<input type="text" name="numero_temporal_flash" id="numero_temporal_flash" class="form-control input-sm" placeholder="Número temporal flash" value="{{$cliente->numero_temporal_flash}}">
@@ -128,9 +129,9 @@
 										</select>
 									</div>
 									<div class="form-group">
-										<input type="text" name="foto" id="foto" class="form-control input-sm" placeholder="Seleccionar foto" value="{{$cliente->foto}}">
+										<label for="foto">Foto</label>
+										<input type="file" name="foto" id="foto" class="form-control input-sm" placeholder="Seleccionar foto">
 									</div>
-
 									<div class="form-group">
 										<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 										<input type="submit"  value="Guardar" class="btn btn-success btn-block">

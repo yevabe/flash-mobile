@@ -25,13 +25,13 @@
 				</div>
 				<div class="panel-body">
 					<div class="table-container">
-						<form method="POST" action="{{ route('cliente.store') }}"  role="form">
+						<form method="POST" action="{{ route('cliente.store') }}"  role="form" enctype="multipart/form-data">
 							{{ csrf_field() }}
 
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 cliente_form">
 									<div class="form-group">
-										<input type="text" name="codigo" id="codigo" class="form-control input-sm" placeholder="Código cliente">
+										<input type="text" required name="codigo" id="codigo" class="form-control input-sm" placeholder="Código cliente">
 									</div>
 									<div class="form-group">
 										<input type="text" name="cedula" id="cedula" class="form-control input-sm" placeholder="Cédula">
@@ -40,11 +40,11 @@
 										<input type="text" name="expedicion" id="expedicion" class="form-control input-sm" placeholder="Fecha de expedición">
 									</div>
 									<div class="form-group">
-										<input type="text" name="nombres" id="nombres" class="form-control input-sm" placeholder="Nombres">
+										<input type="text" required name="nombres" id="nombres" class="form-control input-sm" placeholder="Nombres">
 									</div>
 
 									<div class="form-group">
-										<input type="text" name="apellidos" id="apellidos" class="form-control input-sm" placeholder="Apellidos">
+										<input type="text" required name="apellidos" id="apellidos" class="form-control input-sm" placeholder="Apellidos">
 									</div>
 									<div class="form-group">
 										<input type="text" name="direccion" id="direccion" class="form-control input-sm" placeholder="Dirección">
@@ -80,7 +80,8 @@
 										<input type="text" name="chip" id="chip" class="form-control input-sm" placeholder="Número de chip">
 									</div>
 									<div class="form-group">
-										<input type="text" name="foto_chip" id="foto_chip" class="form-control input-sm" placeholder="Foto de chip">
+										<label for="foto_chip">Foto Chip</label>
+										<input type="file" name="foto_chip" id="foto_chip" class="form-control input-sm" placeholder="Foto de chip">
 									</div>
 									<div class="form-group">
 										<input type="text" name="numero_temporal_flash" id="numero_temporal_flash" class="form-control input-sm" placeholder="Número temporal flash">
@@ -128,7 +129,8 @@
 										</select>
 									</div>
 									<div class="form-group">
-										<input type="text" name="foto" id="foto" class="form-control input-sm" placeholder="Seleccionar foto">
+										<label for="foto">Foto</label>
+										<input type="file" name="foto" id="foto" class="form-control input-sm" placeholder="Seleccionar foto">
 									</div>
 
 									<div class="form-group">

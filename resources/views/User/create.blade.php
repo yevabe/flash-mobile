@@ -25,7 +25,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="table-container">
-						<form method="POST" action="{{ route('tiendas.store') }}"  role="form">
+						<form method="POST" action="{{ route('tiendas.store') }}"  role="form" enctype="multipart/form-data">
 							{{ csrf_field() }}
 
 							<div class="row">
