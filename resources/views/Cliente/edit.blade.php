@@ -90,6 +90,9 @@
 										<input type="text" name="valor_recarga_activacion" id="valor_recarga_activacion" class="form-control input-sm" placeholder="Valor recarga activación" value="{{$cliente->valor_recarga_activacion}}">
 									</div>
 									<div class="form-group">
+										<input type="text" name="fecha_renovacion" id="fecha_renovacion" class="form-control input-sm" placeholder="Fecha renovación" value="{{$cliente->fecha_renovacion}}">
+									</div>
+									<div class="form-group">
 										<input type="text" name="plan_flash_mobile" id="plan_flash_mobile" class="form-control input-sm" placeholder="Plan flash mobile" value="{{$cliente->plan_flash_mobile}}">
 									</div>
 									<div class="form-group">
@@ -99,9 +102,9 @@
 										<input type="text" name="operador" id="operador" class="form-control input-sm" placeholder="Operador" value="{{$cliente->operador}}">
 									</div>
 									<div class="form-group">
-										<select class="form-control" name="tipo_plan_operador_actual" value="{{$cliente->tipo_plan_operador_actual}}">
-											<option value="postpago">Postpago</option>
-											<option value="prepago">Prepago</option>
+										<select class="form-control" name="tipo_plan_operador_actual">
+											<option value="postpago" @if($cliente->tipo_plan_operador_actual=="postpago") selected @endif>Postpago</option>
+											<option value="prepago" @if($cliente->tipo_plan_operador_actual=="prepago") selected @endif>Prepago</option>
 										</select>
 									</div>
 									<div class="form-group">
@@ -124,12 +127,13 @@
 									</div>
 									<div class="form-group">
 										<select class="form-control" name="estado">
-											<option value="activo">Activo</option>
-											<option value="inactivo">Inactivo</option>
+											<option value="activo" @if($cliente->estado=="activo") selected @endif>Activo</option>
+											<option value="inactivo" @if($cliente->estado=="inactivo") selected @endif>Inactivo</option>
+
 										</select>
 									</div>
 									<div class="form-group">
-										<label for="foto">Foto@if($cliente->foto!="")<a href="/storage/{{$cliente->foto}}" target="_blank">(Ver foto actual)</a> @endif</label></label>
+										<label for="foto">Foto @if($cliente->foto!="")<a href="/storage/{{$cliente->foto}}" target="_blank">(Ver foto actual)</a> @endif</label></label>
 										<input type="file" name="foto" id="foto" class="form-control input-sm" placeholder="Seleccionar foto">
 									</div>
 									<div class="form-group">

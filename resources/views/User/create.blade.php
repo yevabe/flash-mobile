@@ -37,25 +37,25 @@
 										<input type="text" name="name" required id="name" class="form-control input-sm" placeholder="Nombre">
 									</div>
 									<div class="form-group">
-										<input type="text" name="celular" required id="celular" class="form-control input-sm" placeholder="Celular">
+										<input type="text" name="celular" id="celular" class="form-control input-sm" placeholder="Celular">
 									</div>
 									<div class="form-group">
-										<input type="text" name="email" required id="email" class="form-control input-sm" placeholder="Correo electronico">
+										<input type="text" name="email" id="email" class="form-control input-sm" placeholder="Correo electronico">
 									</div>
 									<div class="form-group">
 										<input type="password" name="password" required id="password" class="form-control input-sm" placeholder="Contraseña">
 									</div>
 									<div class="form-group">
-										<input type="file" name="foto" required id="foto" class="form-control input-sm" placeholder="Fotografía">
+										<input type="file" name="foto" id="foto" class="form-control input-sm" placeholder="Fotografía">
 									</div>
 									<div class="form-group">
 										<div class="radio">
-										  <label><input type="radio" value="1" name="active" checked>Activo</label>
+										  <label><input type="checkbox" value="1" name="active" checked>Activo</label>
 										</div>
 									</div>
 									<div class="form-group">
 										<input type="submit"  value="Guardar" class="btn btn-success btn-block">
-										<a href="{{ route('cliente.index') }}" class="btn btn-info btn-block" >Atrás</a>
+										<a href="{{ route('tiendas.index') }}" class="btn btn-info btn-block" >Atrás</a>
 									</div>
 								</div>
 							</div>

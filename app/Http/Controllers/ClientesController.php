@@ -70,6 +70,7 @@ class ClientesController extends Controller
           $cliente->tipo_plan_operador_actual = $request->tipo_plan_operador_actual;
           $cliente->nip = $request->nip;
           $cliente->fecha_portabilidad = $request->fecha_portabilidad;
+          $cliente->fecha_renovacion = $request->fecha_renovacion;
           $cliente->cuenta_flash = $request->cuenta_flash;
           $cliente->contrasena_cuenta = $request->contrasena_cuenta;
           $cliente->correo_creado = $request->correo_creado;
@@ -153,6 +154,7 @@ class ClientesController extends Controller
         $cliente->tipo_plan_operador_actual = $request->tipo_plan_operador_actual;
         $cliente->nip = $request->nip;
         $cliente->fecha_portabilidad = $request->fecha_portabilidad;
+        $cliente->fecha_renovacion = $request->fecha_renovacion;
         $cliente->cuenta_flash = $request->cuenta_flash;
         $cliente->contrasena_cuenta = $request->contrasena_cuenta;
         $cliente->correo_creado = $request->correo_creado;
@@ -184,7 +186,16 @@ class ClientesController extends Controller
      */
     public function destroy($id)
     {
-      Cliente::where('id', $id)->delete();
+      $cliente = Cliente::find($id);
+      $cliente->estado = "inactivo";
+      $cliente->save();
+      return redirect('/');
+    }
+    public function activar($id)
+    {
+      $cliente = Cliente::find($id);
+      $cliente->estado = "activo";
+      $cliente->save();
       return redirect('/');
     }
 }

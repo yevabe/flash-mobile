@@ -41,7 +41,7 @@ class UsersController extends Controller
         $code_exist = User::where("username", $request->username)->count();
 
         if($user_exist==0 && $code_exist==0){
-          $this->validate($request,[ 'username'=>'required', 'name'=>'required', 'email'=>'required', 'password'=>'required']);
+          $this->validate($request,[ 'username'=>'required', 'name'=>'required', 'password'=>'required']);
 
 
           $user = new User;
@@ -132,7 +132,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        $this->validate($request,[ 'username'=>'required', 'name'=>'required', 'email'=>'required']);
+        $this->validate($request,[ 'username'=>'required', 'name'=>'required']);
 
 
         return redirect()->route('tiendas.index')->with('success','Registro actualizado satisfactoriamente');
@@ -147,7 +147,17 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-      User::where('id', $id)->delete();
+      $user = User::find($id);
+      $user->active = 0;
+      $user->save();
+
+      return redirect('/tiendas');
+    }
+    public function activar($id)
+    {
+      $user = User::find($id);
+      $user->active = 1;
+      $user->save();
       return redirect('/tiendas');
     }
 }

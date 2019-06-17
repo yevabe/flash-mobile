@@ -22,7 +22,7 @@
                <th>Foto</th>
                <th>Foto Chip</th>
                <th>Editar</th>
-               <th>Eliminar</th>
+               <th>Activar/Inactivar</th>
              </thead>
              <tbody>
               @if($clientes->count())
@@ -37,6 +37,7 @@
                 <td>@if($cliente->foto_chip!="")<a href="/storage/{{$cliente['foto_chip']}}" target="_blank">Ver foto chip</a> @endif</td>
 
                 <td><a class="btn btn-primary btn-xs" href="{{action('ClientesController@edit', $cliente->id)}}" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                @if($cliente->estado=="activo")
                 <td>
                   <form action="{{action('ClientesController@destroy', $cliente->id)}}" method="post">
                    {{csrf_field()}}
@@ -44,6 +45,10 @@
 
                    <button onclick = "if (! confirm('¿Esta seguro?')) { return false; }" class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
                  </td>
+                 @else
+                 <td>
+                  <a class="btn btn-success btn-xs" href="{{action('ClientesController@activar', $cliente->id)}}" ><span class="glyphicon glyphicon-circle-arrow-up"></span></a></td>
+                 @endif
                </tr>
                @endforeach
                @else

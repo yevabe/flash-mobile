@@ -20,9 +20,12 @@ Auth::routes();
 Route::resource('cliente','ClientesController')->middleware('auth');;
 Route::get('/cliente/create', 'ClientesController@create')->name('cliente.create' );
 Route::post('/cliente/store', 'ClientesController@store')->name('cliente.store');
+Route::get('/cliente/activar/{id}', 'ClientesController@activar')->name('cliente.activar');
+
 Route::post('/cliente/save/{id}', 'ClientesController@update')->name('cliente.edit');
 
 Route::resource('tiendas','UsersController')->middleware('auth');;
 Route::get('/tiendas/create', 'UsersController@create')->name('tiendas.create' );
 Route::post('/tiendas/store', 'UsersController@store')->name('tiendas.store');
 Route::post('/tiendas/save', 'UsersController@update')->name('tiendas.edit');
+Route::get('/tiendas/activar/{id}', 'UsersController@activar')->name('tiendas.activar');

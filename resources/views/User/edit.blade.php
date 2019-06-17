@@ -39,10 +39,10 @@
 										<input type="text" name="name" required id="name" class="form-control input-sm" placeholder="Nombre" value="{{$user->name}}">
 									</div>
 									<div class="form-group">
-										<input type="text" name="celular" required id="celular" class="form-control input-sm" placeholder="Celular" value="{{$user->celular}}">
+										<input type="text" name="celular"  id="celular" class="form-control input-sm" placeholder="Celular" value="{{$user->celular}}">
 									</div>
 									<div class="form-group">
-										<input type="text" name="email" required id="email" class="form-control input-sm" placeholder="Correo electronico" value="{{$user->email}}">
+										<input type="text" name="email"  id="email" class="form-control input-sm" placeholder="Correo electronico" value="{{$user->email}}">
 									</div>
 									<div class="form-group">
 										<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Cambiar contraseña" value="">
@@ -51,15 +51,15 @@
 										<input type="file" name="foto" id="foto" class="form-control input-sm" placeholder="Fotografía">
 									</div>
 									<div class="form-group">
-										<div class="radio">
-										  <label><input type="radio" value="1" @if($user->active==1) checked @endif name="active">Activo</label>
+										<div class="checkbox">
+										  <label><input type="checkbox" value="1" @if($user->active==1) checked @endif name="active">Activo</label>
 										</div>
 									</div>
 									<div class="form-group">
 										<input type="hidden" name="id" value="{{$user->id}}">
 
 										<input type="submit"  value="Guardar" class="btn btn-success btn-block">
-										<a href="{{ route('cliente.index') }}" class="btn btn-info btn-block" >Atrás</a>
+										<a href="{{ route('tiendas.index') }}" class="btn btn-info btn-block" >Atrás</a>
 									</div>
 								</div>
 							</div>

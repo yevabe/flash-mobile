@@ -26,7 +26,7 @@
                <th data-priority="2">Celular</th>
                <th>Foto</th>
                <th data-priority="1">Editar</th>
-               <th data-priority="1">Eliminar</th>
+               <th data-priority="1">Activar/Inactivar</th>
              </thead>
              <tbody>
               @if($users->count())
@@ -38,6 +38,7 @@
                 <td>{{$user->celular}}</td>
                 <td>@if($user->foto!="")<a href="/storage/{{$user['foto']}}" target="_blank">Ver foto</a> @endif</td>
                 <td><a class="btn btn-primary btn-xs" href="{{action('UsersController@edit', $user->id)}}" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                @if($user->active==1)
                 <td>
                   @if($user->admin == 0)
                     <form action="{{action('UsersController@destroy', $user->id)}}" method="post">
@@ -48,6 +49,11 @@
                    </form>
                    @endif
                  </td>
+                 @else
+                 <td>
+                  <a class="btn btn-success btn-xs" href="{{action('UsersController@activar', $user->id)}}" ><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
+                </td>
+                 @endif
                </tr>
                @endforeach
                @else
