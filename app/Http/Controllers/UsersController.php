@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -101,7 +102,11 @@ class UsersController extends Controller
         $user = User::find($id);
         return view('User.edit',compact('user'));
     }
-
+    public function perfil()
+    {
+      $user = User::find(Auth::user()->id);
+      return view('User.edit',compact('user'));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -134,6 +139,9 @@ class UsersController extends Controller
 
         $this->validate($request,[ 'username'=>'required', 'name'=>'required']);
 
+        if(Auth::user()->admin==0){
+          return redirect()->route('tiendas.perfil')->with('success','Registro actualizado satisfactoriamente');
+        }
 
         return redirect()->route('tiendas.index')->with('success','Registro actualizado satisfactoriamente');
 

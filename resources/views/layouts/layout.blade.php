@@ -28,6 +28,8 @@
 				@if(Auth::user()->admin==1)
 				<li><a href="/tiendas"><span class="glyphicon glyphicon-home"></span> Tiendas</a></li>
 				@endif
+				<li><a href="/tiendas/perfil"><span class="glyphicon glyphicon-edit"></span> Mis datos</a></li>
+
 				<li><a href="{{ route('logout') }}"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
 			</ul>
 		</div>

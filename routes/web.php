@@ -13,6 +13,7 @@
 Route::resource('/','ClientesController')->middleware('auth');;
 Route::resource('/home','ClientesController')->middleware('auth');;
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+Route::get('/tiendas/perfil', 'UsersController@perfil')->name('tiendas.perfil' );
 
 
 Auth::routes();

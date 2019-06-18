@@ -117,8 +117,7 @@ class ClientesController extends Controller
         $cliente = cliente::find($id);
         return view('Cliente.edit',compact('cliente'));
     }
-
-    /**
+   /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
