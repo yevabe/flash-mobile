@@ -21,7 +21,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Flash Mobile</a>
+				<a class="navbar-brand" href="#">Flash Mobile - {{Auth::user()->name}}</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/cliente"><span class="glyphicon glyphicon-user"></span> Clientes</a></li>
