@@ -90,6 +90,9 @@
 										<input type="text" name="valor_recarga_activacion" id="valor_recarga_activacion" class="form-control input-sm" placeholder="Valor recarga activación">
 									</div>
 									<div class="form-group">
+										<input type="text" name="fecha_renovacion" id="fecha_renovacion" class="form-control input-sm" placeholder="Fecha renovación">
+									</div>
+									<div class="form-group">
 										<input type="text" name="plan_flash_mobile" id="plan_flash_mobile" class="form-control input-sm" placeholder="Plan flash mobile">
 									</div>
 									<div class="form-group">

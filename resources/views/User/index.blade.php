@@ -37,7 +37,10 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->celular}}</td>
                 <td>@if($user->foto!="")<a href="/storage/{{$user['foto']}}" target="_blank">Ver foto</a> @endif</td>
-                <td><a class="btn btn-primary btn-xs" href="{{action('UsersController@edit', $user->id)}}" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td>
+                  <a href="{{action('UsersController@edit', $user->id)}}" class="btn btn-primary">Editar</a>
+
+                </td>
                 @if($user->active==1)
                 <td>
                   @if($user->admin == 0)
@@ -45,13 +48,13 @@
                      {{csrf_field()}}
                      <input name="_method" type="hidden" value="DELETE">
 
-                     <button onclick = "if (! confirm('¿Esta seguro?')) { return false; }" class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                     <button onclick = "if (! confirm('¿Esta seguro?')) { return false; }" class="btn btn-danger" type="submit">Eliminar</button>
                    </form>
                    @endif
                  </td>
                  @else
                  <td>
-                  <a class="btn btn-success btn-xs" href="{{action('UsersController@activar', $user->id)}}" ><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
+                   <a href="{{action('UsersController@activar', $user->id)}}" class="btn btn-success">Activar</a>
                 </td>
                  @endif
                </tr>
