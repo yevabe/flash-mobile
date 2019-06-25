@@ -81,7 +81,7 @@
 									</div>
 									<div class="form-group">
 										<label for="foto_chip">Foto Chip</label>
-										<input type="file" name="foto_chip" id="foto_chip" class="form-control input-sm" placeholder="Foto de chip">
+										<input type="file" name="foto_chip" id="foto_chip" class="form-control" placeholder="Foto de chip">
 									</div>
 									<div class="form-group">
 										<input type="text" name="numero_temporal_flash" id="numero_temporal_flash" class="form-control input-sm" placeholder="Número temporal flash">
@@ -133,7 +133,7 @@
 									</div>
 									<div class="form-group">
 										<label for="foto">Foto</label>
-										<input type="file" name="foto" id="foto" class="form-control input-sm" placeholder="Seleccionar foto">
+										<input type="file" name="foto" id="foto" class="form-control" placeholder="Seleccionar foto">
 									</div>
 
 									<div class="form-group">
