@@ -15,6 +15,9 @@ class UsersController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->admin==0){
+          return redirect()->route('Cliente.index');
+        }
         $users= User::orderBy('id')->paginate(7);
         return view('User/index',compact('users'));
     }
