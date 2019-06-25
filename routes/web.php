@@ -18,7 +18,7 @@ Route::get('/tiendas/perfil', 'UsersController@perfil')->name('tiendas.perfil' )
 
 Auth::routes();
 
-Route::resource('cliente','ClientesController')->middleware('auth');;
+Route::resource('cliente','ClientesController')->middleware('auth')->name('cliente.index' );
 Route::get('/cliente/create', 'ClientesController@create')->name('cliente.create' );
 Route::post('/cliente/store', 'ClientesController@store')->name('cliente.store');
 Route::get('/cliente/activar/{id}', 'ClientesController@activar')->name('cliente.activar');
