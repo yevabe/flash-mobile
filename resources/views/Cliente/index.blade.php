@@ -46,11 +46,11 @@
                    {{csrf_field()}}
                    <input name="_method" type="hidden" value="DELETE">
 
-                   <button onclick = "if (! confirm('¿Esta seguro?')) { return false; }" class="btn btn-danger" type="submit">Eliminar</button>
+                   <button onclick = "if (! confirm('¿Esta seguro?')) { return false; }" class="btn btn-success" type="submit">Activo</button>
                  </td>
                  @else
                  <td>
-                   <a href="{{action('ClientesController@activar', $cliente->id)}}" class="btn btn-success">Activar</a>
+                   <a href="{{action('ClientesController@activar', $cliente->id)}}" class="btn btn-danger">Inactivo</a>
 
                  @endif
                </tr>
