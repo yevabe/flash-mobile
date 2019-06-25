@@ -132,7 +132,7 @@
 										</select>
 									</div>
 									<div class="form-group">
-										<label for="foto">Foto</label>
+										<label for="foto">Foto Cliente</label>
 										<input type="file" name="foto" id="foto">
 									</div>
 
