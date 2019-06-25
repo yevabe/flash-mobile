@@ -15,12 +15,12 @@
             <table id="mytable" class="display responsive nowrap" style="width:100%">
              <thead>
                <th>Código</th>
-               <th>Nombres</th>
-               <th>Apellidos</th>
-               <th># Celular</th>
-               <th>Email</th>
-               <th>Foto</th>
-               <th>Foto Chip</th>
+               <th>Nombre</th>
+               <th># a portar</th>
+               <th>Plan</th>
+               <th>Fecha ren</th>
+               <th>Cuenta</th>
+               <th>Contraseña</th>
                <th data-priority="1">Editar</th>
                <th data-priority="1">Activar/Inactivar</th>
              </thead>
@@ -29,13 +29,12 @@
               @foreach($clientes as $cliente)
               <tr>
                 <td>{{$cliente->codigo}}</td>
-                <td>{{$cliente->nombres}}</td>
-                <td>{{$cliente->apellidos}}</td>
-                <td>{{$cliente->celular}}</td>
-                <td>{{$cliente->email}}</td>
-                <td>@if($cliente->foto!="")<a href="/storage/{{$cliente['foto']}}" target="_blank">Ver foto</a> @endif</td>
-                <td>@if($cliente->foto_chip!="")<a href="/storage/{{$cliente['foto_chip']}}" target="_blank">Ver foto chip</a> @endif</td>
-
+                <td>{{$cliente->nombres}} {{$cliente->apellidos}}</td>
+                <td>{{$cliente->numero_a_portar}}</td>
+                <td>{{$cliente->plan_flash_mobile}}</td>
+                <td>{{$cliente->fecha_renovacion}}</td>
+                <td>{{$cliente->cuenta_flash}}</td>
+                <td>{{$cliente->contrasena_cuenta}}</td>
                 <td>
                   <a href="{{action('ClientesController@edit', $cliente->id)}}" class="btn btn-primary">Editar</a>
 
@@ -74,7 +73,33 @@ $(document).ready(function() {
     $('#mytable').DataTable( {
       responsive: true,
       info: false,
+      @if(Auth::user()->admin==0)
       searching:false,
+      @endif
+      language: {
+        "sProcessing":     "Procesando...",
+        "sLengthMenu":     "Mostrar _MENU_ registros",
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Buscar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+      },
       paging:false
     } );
 } );
